@@ -53,9 +53,10 @@ def 格式更新(interaction):
     data=load_bank()
     user_id=str(interaction.user.id)
     if user_id not in data:
-        data[user_id]=user_id
+        data[user_id]={}
     account=data[user_id]
-    DEFAULT_ACCOUNT={'wallet':0,'bank':1000,'level':1}
+    DEFAULT_ACCOUNT={'wallet':0,'bank':1000,'level':1,'damage':0,'defense':0}
+    #damage和defense在69,70行更新,這裡只是防止它每次都刪掉再新增
     fixed=False
     for key,default_value in  DEFAULT_ACCOUNT.items():
         if key not in account:
